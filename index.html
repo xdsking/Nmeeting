@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="js/jquery-ui-bootstrap-jquery-ui/css/custom-theme/jquery-ui-1.10.0.custom.css">
 
     <link rel="stylesheet" href="js/dndSource/dndSource.css">
+    <link rel="stylesheet" href="js/modalDialog/modalDialog.css">
 
     <link href="css/index.css" rel="stylesheet">
     <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
@@ -96,6 +97,8 @@
                                     class="glyphicon glyphicon-eur" title="电子白板"> </span></button>
                             <button id="fool2" class="btn btn-primary" style="margin: 5px"><span
                                     class="glyphicon glyphicon-floppy-disk" title="上传保存"> </span></button>
+                            <button id="fool3" class="btn btn-primary" style="margin: 5px"><span
+                                    class="glyphicon glyphicon-folder-close" title="模态窗口"> </span></button>
                         </div>
                     </div>
                 </div>
@@ -150,6 +153,7 @@
 <div id="dockBar"></div>
 <div id="dndSource"></div>
 <div id="dndSource2"></div>
+<div id="modalDialogPanel"></div>
 <script src="js/jquery/jQuery-1.11.1.js"></script>
 <script src="js/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js"></script>
 <script src="js/bootstrap-3.3.0-dist/dist/js/ie10-viewport-bug-workaround.js"></script>
@@ -157,6 +161,7 @@
 <script src="js/hammer.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/dndSource/dndSource.js"></script>
+<script type="text/javascript" src="js/modalDialog/modalDialog.js"></script>
 <script type="text/javascript">
     $(function () {
         $("#fool1").click(function () {
@@ -206,6 +211,29 @@
                 arguments[0].stopPropagation();
                 //移动端切换面板
                 showOperatePanel({title: "上传保存"});
+                //TODO
+            }
+        });
+        $("#fool3").click(function(){
+            if (IsPC()) {
+                var modal=$("#modalDialogPanel");
+                modal.modalDialog({
+                    style:{
+                        height: document.body.scrollHeight-50,
+                        width:document.body.scrollWidth-200
+                    }
+                }).modal('show');
+                var leftMenu=modal.modalDialog.getLeftMenu();
+                leftMenu.click(function(){
+                    alert("向左");
+                });
+                var rightMenu=modal.modalDialog.getRightMenu();
+                rightMenu.click(function(){
+                    alert("向右");
+                });
+                var modalBody=modal.modalDialog.getModalBody();
+                modalBody.append($("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口</div>"));
+            } else {
                 //TODO
             }
         });
