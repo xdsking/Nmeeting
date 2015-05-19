@@ -223,16 +223,25 @@
                         width:document.body.scrollWidth-200
                     }
                 }).modal('show');
+                var modalBody=modal.modalDialog.getModalBody();
+                var domNode=$("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口1</div>");
+                modalBody.append(domNode);
                 var leftMenu=modal.modalDialog.getLeftMenu();
+
+                var index=1;
                 leftMenu.click(function(){
-                    alert("向左");
+                    index-=1;
+                    var newDomNode=$("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口"+index+"</div>");
+                    domNode.replaceWith(newDomNode);
+                    domNode=newDomNode;
                 });
                 var rightMenu=modal.modalDialog.getRightMenu();
                 rightMenu.click(function(){
-                    alert("向右");
+                    index+=1;
+                    var newDomNode=$("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口"+index+"</div>");
+                    domNode.replaceWith(newDomNode);
+                    domNode=newDomNode;
                 });
-                var modalBody=modal.modalDialog.getModalBody();
-                modalBody.append($("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口</div>"));
             } else {
                 //TODO
             }
