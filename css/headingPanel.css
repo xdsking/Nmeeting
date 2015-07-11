@@ -1,0 +1,8 @@
+/*
+标题面板绝对定位*/
+.cstm-panel-body-height{
+    margin-top: -50px;
+}
+.cstm-panel-heading{
+    visibility: hidden;
+}

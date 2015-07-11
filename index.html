@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../CDN/js/modalDialog/modalDialog.css">
 
     <link href="css/index.css" rel="stylesheet">
+    <link href="css/headingPanel.css" rel="stylesheet">
     <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
     <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
     <!--[if lt IE 9]>
@@ -55,7 +56,7 @@
                     <span class="glyphicon glyphicon-asterisk" style="visibility: hidden"></span>
                     <span id="hiddenUserPane" class="glyphicon glyphicon-triangle-right" style="float: right"></span>
                 </div>
-                <div class="panel-body cstm-panel-body-height" style="padding: 0 0;">
+                <div class="panel-body cstm-panel-body-height">
                     <!--内容-->
                     <div class="btn-group btn-group-justified toolBar-item" role="group">
                         <div class="btn-group">
@@ -106,15 +107,10 @@
         </div>
         <div class="col-lg-6 cstm-col-padding">
             <div class="panel panel-info cstm-video-pane">
-                <div class="panel-heading">
+                <div class="panel-heading cstm-panel-heading">
                     <span id="operateUserPane" class="glyphicon glyphicon-user"></span>
                     <span id="operateBadgeChartPane" class="badge" style="float: right">14</span>
                     <span id="operateChartPane" class="glyphicon glyphicon-comment" style="float: right"></span>
-                    <!--<h4 class="panel-title">
-                        <a class="">
-                            视频窗口
-                        </a>
-                    </h4>-->
                 </div>
                 <div class="panel-body cstm-panel-body-height">
                     <!--内容-->
@@ -123,7 +119,7 @@
         </div>
         <div class="col-lg-4 cstm-col-padding">
             <div class="panel panel-info cstm-chart-pane">
-                <div class="panel-heading">
+                <div class="panel-heading cstm-panel-heading">
                     <span id="hiddenChartPane" class="glyphicon glyphicon-triangle-left"></span>
                     <!--<h4 class="panel-title">
                         <a class="">
@@ -138,7 +134,7 @@
         </div>
         <div class="col-lg-0 cstm-col-padding">
             <div class="panel panel-info cstm-operate-pane" style="display: none">
-                <div class="panel-heading" style="text-align: center">
+                <div class="panel-heading cstm-panel-heading" style="text-align: center">
                     <span id="hiddenOperatePane1" style="float: right"
                           class="glyphicon glyphicon-triangle-right"></span>
                     <span id="operatePane1Title" style="font-weight: bold">工具类操作窗口</span>
@@ -162,6 +158,7 @@
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="../CDN/js/dndSource/dndSource.js"></script>
 <script type="text/javascript" src="../CDN/js/modalDialog/modalDialog.js"></script>
+<script type="text/javascript" src="js/headingPanel.js"></script>
 <script type="text/javascript">
     $(function () {
         $("#fool1").click(function () {
@@ -174,7 +171,7 @@
                     theme: "info",
                     closable: true,
                     dockable: true,
-                    resizable:true,
+                    resizable: true,
                     content: content, /*必设参数*/
                     dockTo: $("#dockBar"),
                     style: "width: 500px;top: 200px;left: 400px;min-height:200px;min-width:300px;"
@@ -201,7 +198,7 @@
                     maxable: true,
                     closable: true,
                     dockable: true,
-                    resizable:true,
+                    resizable: true,
                     content: content, /*必设参数*/
                     dockTo: $("#dockBar"),
                     style: "width: 500px;top: 200px;left: 400px;min-height:200px;min-width:300px;"
@@ -214,33 +211,33 @@
                 //TODO
             }
         });
-        $("#fool3").click(function(){
+        $("#fool3").click(function () {
             if (IsPC()) {
-                var modal=$("#modalDialogPanel");
+                var modal = $("#modalDialogPanel");
                 modal.modalDialog({
-                    style:{
-                        height: document.body.scrollHeight-50,
-                        width:document.body.scrollWidth-200
+                    style: {
+                        height: document.body.scrollHeight - 50,
+                        width: document.body.scrollWidth - 200
                     }
                 }).modal('show');
-                var modalBody=modal.modalDialog.getModalBody();
-                var domNode=$("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口1</div>");
+                var modalBody = modal.modalDialog.getModalBody();
+                var domNode = $("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口1</div>");
                 modalBody.append(domNode);
-                var leftMenu=modal.modalDialog.getLeftMenu();
+                var leftMenu = modal.modalDialog.getLeftMenu();
 
-                var index=1;
-                leftMenu.click(function(){
-                    index-=1;
-                    var newDomNode=$("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口"+index+"</div>");
+                var index = 1;
+                leftMenu.click(function () {
+                    index -= 1;
+                    var newDomNode = $("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口" + index + "</div>");
                     domNode.replaceWith(newDomNode);
-                    domNode=newDomNode;
+                    domNode = newDomNode;
                 });
-                var rightMenu=modal.modalDialog.getRightMenu();
-                rightMenu.click(function(){
-                    index+=1;
-                    var newDomNode=$("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口"+index+"</div>");
+                var rightMenu = modal.modalDialog.getRightMenu();
+                rightMenu.click(function () {
+                    index += 1;
+                    var newDomNode = $("<div style='font-size: 100px;color: #ffffff;text-align: center'>视频窗口" + index + "</div>");
                     domNode.replaceWith(newDomNode);
-                    domNode=newDomNode;
+                    domNode = newDomNode;
                 });
             } else {
                 //TODO

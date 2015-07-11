@@ -1,7 +1,7 @@
 /**
  * Created by xuds on 2015/3/14.
  */
-var marginBottom=69;//面板距bottom 的距离//114
+var marginBottom=19;//面板距bottom 的距离//114
 //PC端移动端判断
 function IsPC() {
     var flag = true;
