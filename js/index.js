@@ -170,10 +170,13 @@ $(function () {
     }
     var bodyHeight = (document.body.scrollHeight - marginBottom) + "px";
     $(".cstm-panel-body-height").css("height", bodyHeight);
+    $(".cstm-user-list-panel").css("height", (document.body.scrollHeight - marginBottom-35)+"px");
+
     //横竖屏切换时,引起window窗口大小改变,重新绘制面板大小;
     $(window).resize(function(){
         var bodyHeight = (document.body.scrollHeight - marginBottom) + "px";
         $(".cstm-panel-body-height").css("height", bodyHeight);
+        $(".cstm-user-list-panel").css("height", bodyHeight);
     });
     //显示"用户列表"按钮事件
     $("#operateUserPane").click(function () {

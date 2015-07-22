@@ -2,7 +2,10 @@
 标题面板绝对定位*/
 .cstm-panel-body-height{
     margin-top: -50px;
+    z-index: 3;
 }
 .cstm-panel-heading{
     visibility: hidden;
+    z-index: 100;
+    position: relative;
 }

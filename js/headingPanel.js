@@ -5,7 +5,7 @@
  * @summary 初始化隐藏标题栏,鼠标移入显示标题栏,延迟n秒后隐藏,移出时隐藏.
  */
 var initPanelHeadingEvt =function(){
-    var domNode=$(".cstm-video-pane,.cstm-qunmumber-pane,.cstm-chart-pane,.cstm-operate-pane");
+    var domNode=$(".cstm-video-pane,.cstm-chart-pane,.cstm-operate-pane");
     var outTimer;
     domNode.mousemove(function(){
         var headingPane=$(this.children[0]);
