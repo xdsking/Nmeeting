@@ -258,8 +258,47 @@ $(function () {
     $(".toolBar-item>div").click(function(evt){
         evt.stopPropagation();//阻止事件冒泡
     });
-    initVideoPanelPanelGesture();
-    initQunmumberPanelPanelGesture();
-    initChartPanelPanelGesture();
-    initOperatePanelPanelGesture();
+    if(!IsPC()){
+        initVideoPanelPanelGesture();
+        initQunmumberPanelPanelGesture();
+        initChartPanelPanelGesture();
+        initOperatePanelPanelGesture();
+    }
+
+
+
+    var func = function (callBack) {
+        if (screenfull.enabled) {
+            document.addEventListener(screenfull.raw.fullscreenchange, function () {
+                if (screenfull.isFullscreen) {
+                    $('#content').addClass("fullScreen");
+                } else {
+
+                    $('#content').removeClass("fullScreen");
+                }
+            });
+        }
+        if (screenfull.enabled) {
+            document.addEventListener(screenfull.raw.fullscreenerror, function (event) {
+                console.error('Failed to enable fullscreen', event);
+            });
+        }
+        callBack();
+    };
+    var target = $('#content')[0]; // Get DOM element from jQuery collection
+    func(function () {
+        $('#fool4').click(function () {
+            if (screenfull.enabled) {
+                screenfull.request(target);
+            }
+        });
+        $('#fool5').click(function () {
+            if (screenfull.enabled) {
+                screenfull.exit();
+            }
+        });
+    });
+    $(window).on("beforeunload", function () {
+        return confirm("确认关闭页面吗?");
+    });
 });

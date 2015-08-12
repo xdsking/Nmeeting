@@ -8,4 +8,5 @@
     visibility: hidden;
     z-index: 100;
     position: relative;
+    opacity: 0.6;
 }
