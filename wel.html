@@ -9,7 +9,7 @@
     <script src="../CDN/lib/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js"></script>
     <script>
 
-        $(function(){
+        $(function () {
             var func = function (callBack) {
                 if (screenfull.enabled) {
                     document.addEventListener(screenfull.raw.fullscreenchange, function () {
@@ -42,17 +42,26 @@
                 });
             });
             $(window).on("beforeunload", function () {
-                return confirm("确认关闭页面吗?");
+                var exitFlag=confirm("确认关闭页面吗?");
+                if(exitFlag){
+                    if (screenfull.enabled) {
+                        screenfull.exit();
+                    }
+                    return true;
+                }else{
+                    return false;
+                }
             });
         });
     </script>
     <style type="text/css">
-        *{
+        * {
             overflow: hidden;
             margin: 0;
             padding: 0;
         }
-        .mainContainer{
+
+        .mainContainer {
             position: absolute;
             top: 0;
             left: 0;
@@ -60,15 +69,18 @@
             height: 100%;
             background-color: #000000;
         }
-        .pane1{
+
+        .pane1 {
             height: 100%;
             background-color: #008000;
         }
-        .pane2{
+
+        .pane2 {
             height: 100%;
             background-color: #2aabd2;
         }
-        .pane3{
+
+        .pane3 {
             height: 100%;
             background-color: #F44336;
         }
@@ -77,10 +89,12 @@
 <body>
 <div id="mainContainer" class="mainContainer">
     <div class="row" style="height: 100%">
-        <div class="col-lg-3 pane1"></div>
-        <div class="col-lg-6 pane2">
+        <div class="col-lg-3 pane1">
             <button id="fullScreen" class="btn btn-info btn-lg">全屏</button>
             <button id="exitScreen" class="btn btn-info btn-lg">退出</button>
+        </div>
+        <div class="col-lg-6 pane2">
+
         </div>
         <div class="col-lg-3 pane3"></div>
     </div>
